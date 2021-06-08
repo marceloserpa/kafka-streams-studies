@@ -35,6 +35,9 @@ public class StreamApplication {
         KafkaStreams streams = new KafkaStreams(builder, properties);
         streams.start();
 
+        System.out.println(streams.toString());
+
+        Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
     }
 
 }
